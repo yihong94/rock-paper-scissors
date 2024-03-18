@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scirrsors</title>
+   
+</head>
+
+<body>
+
+</body>
+
+<script>
+    
+    let compScore =0
+    let playerScore = 0
+    let choice = ['rock', 'paper', 'scissors'];
+
+    function getComputerChoice(choice) {
+        return choice[Math.floor(Math.random() * choice.length)];
+    }
+
+    function round(playerselection, computerselection){
+        if (playerselection === computerselection){
+            return "It's a tie, you both pick the same choice";
+        }
+        else if (playerselection === 'rock' && computerselection === 'scissors'){
+            playerScore++
+            return "You won, rock beats scissors!";
+        }
+        else if (playerselection === 'scissors' && computerselection === 'paper'){
+            playerScore++
+            return "You won, scissors beats papper!";
+        }
+        else if (playerselection === 'paper' && computerselection === 'rock'){
+            playerScore++
+            return "You won, paper beats rock!";
+        }
+        else {
+            compScore++
+            return "You lose!";
+        }
+    }
+
+    const playerselection = prompt("Please enter value").toLowerCase();
+     
+    function playGame(){
+        for (let i = 0; i < 5; i++){
+            const computerselection = getComputerChoice(choice)
+
+            console.log(playerselection,computerselection);
+            console.log(round(playerselection, computerselection));
+        }
+
+        if (playerScore > compScore){
+            return "You beat the computer"
+        }
+        else if (compScore > playerScore){
+            return "Computer beat you, sad"
+        }
+        else{
+            return "Tie"
+        }
+    }
+
+    console.log(playGame())
+
+</script>
+</html>
